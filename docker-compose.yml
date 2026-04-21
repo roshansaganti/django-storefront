@@ -1,14 +1,4 @@
 services:
-  web:
-    container_name: web
-    build: .
-    command: uv run python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
   db:
     container_name: db
     image: postgres:15.5-alpine3.18
@@ -18,3 +8,17 @@ services:
       POSTGRES_DB: mydatabase
     ports:
       - "5432:5432"
+  web:
+    container_name: web
+    build: .
+    command: uv run python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
