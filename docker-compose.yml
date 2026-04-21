@@ -1,0 +1,21 @@
+services:
+  web:
+    container_name: web
+    build: .
+    # command: python manage.py runserver
+    command: tail -f /dev/null
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: postgres:15.5-alpine3.18
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
