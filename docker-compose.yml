@@ -8,6 +8,8 @@ services:
       POSTGRES_DB: mydatabase
     ports:
       - "5432:5432"
+    networks:
+      - default
   web:
     container_name: web
     build: .
@@ -18,7 +20,13 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydatabase
+      POSTGRES_HOST: db
     ports:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      - default
+networks:
+  default:
+    driver: bridge
