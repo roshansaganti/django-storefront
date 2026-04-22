@@ -13,7 +13,8 @@ services:
   web:
     container_name: web
     build: .
-    command: uv run python manage.py runserver 0.0.0.0:8000
+    # command: uv run python manage.py runserver 0.0.0.0:8000
+    # command: tail -f /dev/null
     volumes:
       - .:/app
     environment:

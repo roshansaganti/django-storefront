@@ -6,6 +6,9 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
+# Copy files
+# COPY . /app
+
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
@@ -15,3 +18,6 @@ RUN uv sync --no-dev
 
 # Upgrade pip
 RUN pip install --upgrade pip
+
+# Entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]
