@@ -26,7 +26,20 @@ seeder.add_entity(
         "date_registered": lambda x: seeder.faker.date_time_this_year(),
     },
 )
-seeder.add_entity(Address, 5)
+seeder.add_entity(
+    Address,
+    5,
+    {
+        "customer": lambda x: Customer.objects.order_by("?").first(),
+        "house_no": lambda x: seeder.faker.building_number(),
+        "street_block": lambda x: seeder.faker.street_name(),
+        "area": lambda x: seeder.faker.city_suffix(),
+        "city": lambda x: seeder.faker.city(),
+        "province": lambda x: seeder.faker.state(),
+        "postal_code": lambda x: seeder.faker.postcode(),
+        "country": lambda x: seeder.faker.country(),
+    },
+)
 seeder.add_entity(Category, 5)
 seeder.add_entity(Product, 5)
 seeder.add_entity(Order, 5)
