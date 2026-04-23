@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include 'includes/header.html' %}
-<body>
-    {% include 'includes/navbar.html' %}
+    {% include 'includes/header.html' %}
 
-    {% include 'includes/jumbotron.html' %}
+    <body>
+        {% include 'includes/navbar.html' %}
 
-    <div class="container mt-4">
-        <h1>Home</h1>
+        {% include 'includes/jumbotron.html' %}
 
-    </div>
+        <div class="container mt-4">
+            <h1>Home</h1>
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
 
-    {% include 'includes/footer.html' %}
+        {% include 'includes/footer.html' %}
+
 </html>
