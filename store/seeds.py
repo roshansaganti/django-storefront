@@ -91,7 +91,13 @@ seeder.add_entity(
             seeder.faker.random_number(digits=5) / 100, 2
         ),
         "order_status": lambda x: seeder.faker.random_element(
-            elements=Order.OrderStatus.values
+            elements=[
+                "pending",
+                "processing",
+                "shipped",
+                "delivered",
+                "cancelled",
+            ]
         ),
     },
 )
@@ -115,13 +121,19 @@ seeder.add_entity(
         "customer": lambda x: Customer.objects.order_by("?").first(),
         "payment_date": lambda x: seeder.faker.date_time_this_year(),
         "payment_method": lambda x: seeder.faker.random_element(
-            elements=Payment.PaymentMethod.values
+            elements=[
+                "credit_card",
+                "debit_card",
+                "paypal",
+                "bank_transfer",
+                "cash",
+            ]
         ),
         "amount": lambda x: round(
             seeder.faker.random_number(digits=5) / 100, 2
         ),
         "payment_status": lambda x: seeder.faker.random_element(
-            elements=Payment.PaymentStatus.values
+            elements=["pending", "completed", "failed", "refunded"]
         ),
     },
 )
@@ -134,10 +146,16 @@ seeder.add_entity(
         "shipping_date": lambda x: seeder.faker.date_this_year(),
         "delivery_date": lambda x: seeder.faker.date_this_year(),
         "shipping_status": lambda x: seeder.faker.random_element(
-            elements=Shipping.ShippingStatus.values
+            elements=[
+                "pending",
+                "shipped",
+                "in_transit",
+                "delivered",
+                "returned",
+            ]
         ),
         "shipping_method": lambda x: seeder.faker.random_element(
-            elements=Shipping.ShippingMethod.values
+            elements=["standard", "express", "overnight", "pickup"]
         ),
     },
 )
