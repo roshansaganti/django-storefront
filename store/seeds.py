@@ -66,8 +66,13 @@ seeder.add_entity(
     5,
     {
         "customer": lambda x: Customer.objects.order_by("?").first(),
-        "created_at": lambda x: seeder.faker.date_time_this_year(),
-        "updated_at": lambda x: seeder.faker.date_time_this_year(),
+        "order_date": lambda x: seeder.faker.date_time_this_year(),
+        "total_amount": lambda x: round(
+            seeder.faker.random_number(digits=5) / 100, 2
+        ),
+        "order_status": lambda x: seeder.faker.random_element(
+            elements=Order.OrderStatus.values
+        ),
     },
 )
 seeder.add_entity(
