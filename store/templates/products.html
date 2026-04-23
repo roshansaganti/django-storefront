@@ -3,15 +3,15 @@
 {% include 'includes/header.html' %}
 <body>
     <header>
-        <h1>Products</h1>
         {% include 'includes/navbar.html' %}
     </header>
 
-    <main>
+    <div class="container mt-4">
         {% block content %}
-        <!-- Content will be injected here -->
+        <h1>Products</h1>
+        <p>Welcome to our products page!</p>
         {% endblock %}
-    </main>
+    </div>
 
     {% include 'includes/footer.html' %}
 </html>
