@@ -70,7 +70,18 @@ seeder.add_entity(
         "updated_at": lambda x: seeder.faker.date_time_this_year(),
     },
 )
-seeder.add_entity(OrderItem, 5)
+seeder.add_entity(
+    OrderItem,
+    5,
+    {
+        "order": lambda x: Order.objects.order_by("?").first(),
+        "product": lambda x: Product.objects.order_by("?").first(),
+        "quantity": lambda x: seeder.faker.random_int(min=1, max=5),
+        "price_at_purchase": lambda x: round(
+            seeder.faker.random_number(digits=5) / 100, 2
+        ),
+    },
+)
 seeder.add_entity(Payment, 5)
 seeder.add_entity(Shipping, 5)
 
