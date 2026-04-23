@@ -73,6 +73,15 @@ seeder.add_entity(
     },
 )
 seeder.add_entity(
+    CartItem,
+    5,
+    {
+        "cart": lambda x: Cart.objects.order_by("?").first(),
+        "product": lambda x: Product.objects.order_by("?").first(),
+        "quantity": lambda x: seeder.faker.random_int(min=1, max=5),
+    },
+)
+seeder.add_entity(
     Order,
     5,
     {
