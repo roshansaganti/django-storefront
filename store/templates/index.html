@@ -7,18 +7,22 @@
 
         {% include 'includes/jumbotron.html' %}
 
-        <div class="container mt-4">
-            {% for product in products %}
-            <div class="card" style="width: 18rem;">
-                <img src="https://picsum.photos/id/26/200" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">${{ product.price|floatformat:2 }}</p>
-                    <p class="card-text">{{ product.description }}</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
+        <div class="container mt-5">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-3 mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://picsum.photos/id/26/200" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">${{ product.price|floatformat:2 }}</p>
+                            <!-- <p class="card-text">{{ product.description }}</p> -->
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
 
         {% include 'includes/footer.html' %}
