@@ -4,6 +4,8 @@ from store.models import (
     Address,
     Category,
     Product,
+    Cart,
+    CartItem,
     Order,
     OrderItem,
     Payment,
@@ -59,6 +61,15 @@ seeder.add_entity(
         ),
         "quantity": lambda x: seeder.faker.random_int(min=0, max=100),
         "category": lambda x: Category.objects.order_by("?").first(),
+    },
+)
+seeder.add_entity(
+    Cart,
+    5,
+    {
+        "customer": lambda x: Customer.objects.order_by("?").first(),
+        "created_at": lambda x: seeder.faker.date_time_this_year(),
+        "updated_at": lambda x: seeder.faker.date_time_this_year(),
     },
 )
 seeder.add_entity(
