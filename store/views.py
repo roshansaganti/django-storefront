@@ -1,11 +1,17 @@
 from django.shortcuts import render
 
+from store.models import Product
+
 
 # Create your views here.
 def index(request):
+    # Fetch all products from the database (placeholder for now)
+    products = Product.objects.all()
+
     context = {
         "title": "Welcome to the Storefront!",
         "tagline": "Discover our amazing products and offers!",
+        "products": products,
     }
 
     return render(request, "index.html", context)
