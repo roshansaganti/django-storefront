@@ -2,14 +2,13 @@
 <html lang="en">
 {% include 'includes/header.html' %}
 <body>
-    <header>
-        {% include 'includes/navbar.html' %}
-    </header>
+    {% include 'includes/navbar.html' %}
+
+    {% include 'includes/jumbotron.html' %}
 
     <div class="container mt-4">
-        {% block content %}
         <h1>Home</h1>
-        {% endblock %}
+
     </div>
 
     {% include 'includes/footer.html' %}

@@ -4,7 +4,8 @@ from django.shortcuts import render
 # Create your views here.
 def index(request):
     context = {
-        "message": "Welcome to the Storefront!",
+        "title": "Welcome to the Storefront!",
+        "tagline": "Discover our amazing products and offers!",
     }
 
     return render(request, "index.html", context)
@@ -12,7 +13,8 @@ def index(request):
 
 def products(request):
     context = {
-        "message": "Here are our products!",
+        "title": "Products",
+        "tagline": "Explore our wide range of products and find what you need!",  # noqa
     }
 
     return render(request, "products.html", context)
@@ -20,7 +22,8 @@ def products(request):
 
 def contact(request):
     context = {
-        "message": "Contact us at contact@example.com",
+        "title": "Contact Us",
+        "tagline": "Have questions? We're here to help! Reach out to us anytime.",  # noqa
     }
 
     return render(request, "contact.html", context)
