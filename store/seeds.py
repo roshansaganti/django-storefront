@@ -40,7 +40,14 @@ seeder.add_entity(
         "country": lambda x: seeder.faker.country(),
     },
 )
-seeder.add_entity(Category, 5)
+seeder.add_entity(
+    Category,
+    5,
+    {
+        "category_name": lambda x: seeder.faker.word().capitalize(),
+        "description": lambda x: seeder.faker.sentence(),
+    },
+)
 seeder.add_entity(Product, 5)
 seeder.add_entity(Order, 5)
 seeder.add_entity(OrderItem, 5)
