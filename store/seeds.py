@@ -105,7 +105,22 @@ seeder.add_entity(
         ),
     },
 )
-seeder.add_entity(Shipping, 5)
+seeder.add_entity(
+    Shipping,
+    5,
+    {
+        "order": lambda x: Order.objects.order_by("?").first(),
+        "address": lambda x: Address.objects.order_by("?").first(),
+        "shipping_date": lambda x: seeder.faker.date_this_year(),
+        "delivery_date": lambda x: seeder.faker.date_this_year(),
+        "shipping_status": lambda x: seeder.faker.random_element(
+            elements=Shipping.ShippingStatus.values
+        ),
+        "shipping_method": lambda x: seeder.faker.random_element(
+            elements=Shipping.ShippingMethod.values
+        ),
+    },
+)
 
 # Execute the seeding process
 inserted_pks = seeder.execute()
