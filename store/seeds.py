@@ -48,7 +48,19 @@ seeder.add_entity(
         "description": lambda x: seeder.faker.sentence(),
     },
 )
-seeder.add_entity(Product, 5)
+seeder.add_entity(
+    Product,
+    5,
+    {
+        "name": lambda x: seeder.faker.word().capitalize(),
+        "description": lambda x: seeder.faker.sentence(),
+        "price": lambda x: round(
+            seeder.faker.random_number(digits=5) / 100, 2
+        ),
+        "quantity": lambda x: seeder.faker.random_int(min=0, max=100),
+        "category": lambda x: Category.objects.order_by("?").first(),
+    },
+)
 seeder.add_entity(Order, 5)
 seeder.add_entity(OrderItem, 5)
 seeder.add_entity(Payment, 5)
