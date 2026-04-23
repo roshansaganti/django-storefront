@@ -61,7 +61,15 @@ seeder.add_entity(
         "category": lambda x: Category.objects.order_by("?").first(),
     },
 )
-seeder.add_entity(Order, 5)
+seeder.add_entity(
+    Order,
+    5,
+    {
+        "customer": lambda x: Customer.objects.order_by("?").first(),
+        "created_at": lambda x: seeder.faker.date_time_this_year(),
+        "updated_at": lambda x: seeder.faker.date_time_this_year(),
+    },
+)
 seeder.add_entity(OrderItem, 5)
 seeder.add_entity(Payment, 5)
 seeder.add_entity(Shipping, 5)
