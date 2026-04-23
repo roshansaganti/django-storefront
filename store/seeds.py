@@ -87,7 +87,24 @@ seeder.add_entity(
         ),
     },
 )
-seeder.add_entity(Payment, 5)
+seeder.add_entity(
+    Payment,
+    5,
+    {
+        "order": lambda x: Order.objects.order_by("?").first(),
+        "customer": lambda x: Customer.objects.order_by("?").first(),
+        "payment_date": lambda x: seeder.faker.date_time_this_year(),
+        "payment_method": lambda x: seeder.faker.random_element(
+            elements=Payment.PaymentMethod.values
+        ),
+        "amount": lambda x: round(
+            seeder.faker.random_number(digits=5) / 100, 2
+        ),
+        "payment_status": lambda x: seeder.faker.random_element(
+            elements=Payment.PaymentStatus.values
+        ),
+    },
+)
 seeder.add_entity(Shipping, 5)
 
 # Execute the seeding process
