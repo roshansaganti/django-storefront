@@ -8,6 +8,30 @@
         {% include 'includes/jumbotron.html' %}
 
         <div class="container mt-5">
+            <!-- Subtotal -->
+            <div class="row">
+                <div class="col text-end">
+                    <h4>Subtotal: ${{ subtotal|floatformat:2 }}</h4>
+                </div>
+            </div>
+
+            <!-- Total -->
+            <div class="row">
+                <div class="col text-end">
+                    <h4>Total: ${{ total|floatformat:2 }}</h4>
+                </div>
+            </div>
+
+            <!-- Checkout -->
+            <div class="row">
+                <div class="col text-end">
+                    <a href="#" class="btn btn-lg btn-danger">Empty Cart</a>
+                    <a href="#" class="btn btn-lg btn-success">Checkout</a>
+                </div>
+            </div>
+
+            <br>
+
             {% for item in items %}
             <div class="row ">
                 <div class="col-md-2">
