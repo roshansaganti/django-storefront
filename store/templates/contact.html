@@ -8,7 +8,60 @@
         {% include 'includes/jumbotron.html' %}
 
         <div class="container mt-5">
-            <h1>Contact Us</h1>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Storefront</h5>
+                            <!-- Address -->
+                            <p class="card-text">123 Main Street<br>Anytown, USA 12345</p>
+                            <!-- Phone -->
+                            <a href="tel:(123)456-7890" class="card-text">123-456-7890</a><br>
+                            <!-- Email -->
+                            <a href="mailto:info@storefront.com" class="card-text">info@storefront.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="embed-map-responsive">
+                        <div class="embed-map-container"><iframe class="embed-map-frame" frameborder="0" scrolling="no"
+                                marginheight="0" marginwidth="0"
+                                src="https://maps.google.com/maps?width=600&height=400&hl=en&q=guantanamo%20bay&t=&z=12&ie=UTF8&iwloc=B&output=embed"></iframe><a
+                                href="https://cartoongames.io"
+                                style="font-size:2px!important;color:gray!important;position:absolute;bottom:0;left:0;z-index:1;max-height:10px;overflow:hidden">Cartoon
+                                Network Games</a><a href="https://pokepath.org"
+                                style="font-size:2px!important;color:gray!important;position:absolute;bottom:0;left:0;z-index:1;max-height:10px;overflow:hidden">PokePath
+                                TD</a></div>
+                        <style>
+                            .embed-map-responsive {
+                                position: relative;
+                                text-align: right;
+                                width: 100%;
+                                height: 0;
+                                padding-bottom: 66.66666666666666%;
+                            }
+
+                            .embed-map-container {
+                                overflow: hidden;
+                                background: none !important;
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                            }
+
+                            .embed-map-frame {
+                                width: 100% !important;
+                                height: 100% !important;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
         </div>
 
         {% include 'includes/footer.html' %}
