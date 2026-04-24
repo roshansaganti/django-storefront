@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'includes/header.html' %}
+
+    <body>
+        {% include 'includes/navbar.html' %}
+
+        {% include 'includes/jumbotron.html' %}
+
+        <div class="container mt-5">
+            {% for item in items %}
+            <div class="row ">
+                <div class="col-md-2">
+                    <img src="https://picsum.photos/id/26/200" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">${{ item.price|floatformat:2 }}</p>
+                        <!-- <p class="card-text">{{ item.description }}</p> -->
+                        <!-- <p class="card-text">
+                            <small class="text-body-secondary">
+                                Last updated 3 mins ago
+                            </small>
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+
+        {% include 'includes/footer.html' %}
+
+</html>

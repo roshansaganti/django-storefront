@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from store.models import Product
+from store.models import Product, CartItem
 
 
 # Create your views here.
@@ -15,6 +15,19 @@ def index(request):
     }
 
     return render(request, "index.html", context)
+
+
+def cart(request):
+    # Fetch all cart items from the database
+    items = CartItem.objects.all()
+
+    context = {
+        "title": "Your Shopping Cart",
+        "tagline": "Review your selected items and proceed to checkout!",  # noqa
+        "items": items,
+    }
+
+    return render(request, "cart.html", context)
 
 
 def products(request):
