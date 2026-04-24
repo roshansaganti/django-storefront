@@ -12,11 +12,11 @@
         <div class="container mt-5">
             <!-- Verify non-empty cart -->
             {% if not items %}
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col text-center">
                     <h3>Your cart is empty!</h3>
                     <p>Browse our products and add items to your cart.</p>
-                    <a href="{% url 'index' %}" class="btn btn-primary">Start Shopping</a>
+                    <a href="{% url 'home' %}" class="btn btn-primary">Start Shopping</a>
                 </div>
             </div>
             {% else %}
@@ -63,7 +63,6 @@
             </div>
             <br>
             {% endfor %}
-            {% endif %}
 
             <hr>
 
@@ -96,6 +95,7 @@
                     <a href="#" class="btn btn-md btn-success">Checkout</a>
                 </div>
             </div>
+            {% endif %}
         </div>
 
         {% include 'includes/footer.html' %}
