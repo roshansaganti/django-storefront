@@ -8,31 +8,30 @@
         {% include 'includes/jumbotron.html' %}
 
         <div class="container mt-5">
-            <!-- Verify non-empty products list -->
-            {% if not products %}
             <div class="row">
+                <!-- Verify non-empty products list -->
+                {% if not products %}
                 <div class="col text-center">
                     <h3>No products available!</h3>
                     <p>Check back later for new products.</p>
                 </div>
             </div>
             {% else %}
-            <div class="row">
-                {% for product in products %}
-                <div class="col-md-3 mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="https://picsum.photos/id/26/200" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">${{ product.price|floatformat:2 }}</p>
-                            <!-- <p class="card-text">{{ product.description }}</p> -->
-                            <a href="#" class="btn btn-primary">Add to Cart</a>
-                        </div>
+            {% for product in products %}
+            <div class="col-md-3 mb-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://picsum.photos/id/26/200" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">${{ product.price|floatformat:2 }}</p>
+                        <!-- <p class="card-text">{{ product.description }}</p> -->
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
-                {% endfor %}
             </div>
-            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
         </div>
 
         {% include 'includes/footer.html' %}
