@@ -15,23 +15,22 @@
                     <h3>No products available!</h3>
                     <p>Check back later for new products.</p>
                 </div>
-            </div>
-            {% else %}
-            {% for product in products %}
-            <div class="col-md-3 mb-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://picsum.photos/id/26/200" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">${{ product.price|floatformat:2 }}</p>
-                        <!-- <p class="card-text">{{ product.description }}</p> -->
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                {% else %}
+                {% for product in products %}
+                <div class="col-md-3 mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://picsum.photos/id/26/200" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">${{ product.price|floatformat:2 }}</p>
+                            <!-- <p class="card-text">{{ product.description }}</p> -->
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+            {% endif %}
         </div>
 
         {% include 'includes/footer.html' %}
