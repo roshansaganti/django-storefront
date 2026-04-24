@@ -11,7 +11,7 @@ def index(request):
     context = {
         "title": "Welcome to the Storefront!",
         "tagline": "Discover our amazing products and offers!",
-        # "products": products,
+        "products": products,
     }
 
     return render(request, "index.html", context)
