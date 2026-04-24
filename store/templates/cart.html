@@ -23,7 +23,29 @@
             <div class="row">
                 <!-- Cart Items -->
                 <div class="col-xl-8">
-                    Cart Stuff
+                    {% for item in items %}
+                    <div class="row ">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="https://picsum.photos/id/26/300/200" class="img-fluid rounded-start"
+                                        alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ item.product.name }}</h5>
+                                        <p class="card-text">Price: ${{ item.product.price|floatformat:2 }}</p>
+                                        <p class="card-text">Quantity: {{ item.quantity }}</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">{{ item.product.description }}</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    {% endfor %}
                 </div>
                 <!-- Summary -->
                 <div class="col-xl-4">
@@ -58,49 +80,6 @@
                     </div>
                 </div>
             </div>
-            {% for item in items %}
-            <div class="row ">
-                <div class="col-md-2">
-                    <img src="https://picsum.photos/id/26/200" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-10">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col text-start">
-                                <h5 class="card-title">{{ item.product.name }}</h5>
-                            </div>
-                            <div class="col text-end">
-                                <h3 class="card-text">${{ item.product.price|floatformat:2 }}</h3>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col text-start">
-                                <p class="card-text">
-                                    <small class="text-body-secondary">
-                                        {{ item.product.description }}
-                                    </small>
-                                </p>
-                            </div>
-                            <div class="col text-end">
-                                <h6 class="card-text">
-                                    <button class="btn btn-sm btn-outline-danger">
-                                        -
-                                    </button>
-                                    <div class="align-middle d-inline-block mx-2">
-                                        {{ item.quantity }}
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-success">
-                                        +
-                                    </button>
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            {% endfor %}
             {% endif %}
         </div>
 
