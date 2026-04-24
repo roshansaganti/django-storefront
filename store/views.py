@@ -18,8 +18,11 @@ def index(request):
 
 
 def cart(request):
-    # Fetch all cart items from the database
-    items = CartItem.objects.all()
+    # Fetch all cart items matching product ID and cart ID
+    items = CartItem.objects.select_related("product").all()
+
+    for item in items:
+        print(f"CartItem: {item}, Product: {item.product}")
 
     context = {
         "title": "Your Shopping Cart",
