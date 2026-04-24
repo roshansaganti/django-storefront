@@ -21,13 +21,31 @@ def cart(request):
     # Fetch all cart items matching product ID and cart ID
     items = CartItem.objects.select_related("product").all()
 
-    for item in items:
-        print(f"CartItem: {item}, Product: {item.product}")
+    # Calculate subtotal
+    subtotal = sum(item.product.price * item.quantity for item in items)
+
+    print(
+        f"Subtotal: {subtotal}"
+    )  # Debugging statement to check subtotal calculation
+
+    # Calculate tax (assuming a fixed tax rate of 10%)
+    tax_rate = 0.1
+    tax = float(subtotal) * tax_rate
+
+    print(f"Tax: {tax}")  # Debugging statement to check tax calculation
+
+    # Calculate total
+    total = float(subtotal) + float(tax)
+
+    print(f"Total: {total}")  # Debugging statement to check total calculation
 
     context = {
         "title": "Your Shopping Cart",
         "tagline": "Review your selected items and proceed to checkout!",  # noqa
         "items": items,
+        "subtotal": subtotal,
+        "tax": tax,
+        "total": total,
     }
 
     return render(request, "cart.html", context)
