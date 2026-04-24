@@ -24,14 +24,20 @@
                             </div>
                         </div>
 
-                        <p class="card-text">
-                            <small class="text-body-secondary">
-                                {{ item.product.description }}
-                            </small>
-                        </p>
-                        <p class="card-text">
-                            Quantity: {{ item.quantity }}
-                        </p>
+                        <div class="row">
+                            <div class="col text-start">
+                                <p class="card-text">
+                                    <small class="text-body-secondary">
+                                        {{ item.product.description }}
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="col text-end">
+                                <h6 class="card-text">
+                                    Quantity: {{ item.quantity }}
+                                </h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
