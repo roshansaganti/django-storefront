@@ -8,6 +8,15 @@
         {% include 'includes/jumbotron.html' %}
 
         <div class="container mt-5">
+            <!-- Verify non-empty products list -->
+            {% if not products %}
+            <div class="row">
+                <div class="col text-center">
+                    <h3>No products available!</h3>
+                    <p>Check back later for new products.</p>
+                </div>
+            </div>
+            {% else %}
             <div class="row">
                 {% for product in products %}
                 <div class="col-md-3 mb-4">
@@ -23,6 +32,7 @@
                 </div>
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
 
         {% include 'includes/footer.html' %}
