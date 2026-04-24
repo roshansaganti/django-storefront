@@ -1,0 +1,103 @@
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'includes/header.html' %}
+
+    <body>
+        {% include 'includes/navbar.html' %}
+
+        {% include 'includes/jumbotron.html' %}
+
+        <div class="container mt-5">
+            <!-- Verify non-empty cart -->
+            {% if not items %}
+            <div class="row mb-5">
+                <div class="col text-center">
+                    <h3>Your cart is empty!</h3>
+                    <p>Browse our products and add items to your cart.</p>
+                    <a href="{% url 'home' %}" class="btn btn-primary">Start Shopping</a>
+                </div>
+            </div>
+            {% else %}
+            {% for item in items %}
+            <div class="row ">
+                <div class="col-md-2">
+                    <img src="https://picsum.photos/id/26/200" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col text-start">
+                                <h5 class="card-title">{{ item.product.name }}</h5>
+                            </div>
+                            <div class="col text-end">
+                                <h3 class="card-text">${{ item.product.price|floatformat:2 }}</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col text-start">
+                                <p class="card-text">
+                                    <small class="text-body-secondary">
+                                        {{ item.product.description }}
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="col text-end">
+                                <h6 class="card-text">
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        -
+                                    </button>
+                                    <div class="align-middle d-inline-block mx-2">
+                                        {{ item.quantity }}
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-success">
+                                        +
+                                    </button>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+
+            <hr>
+
+            <div class="row">
+                <div class="col">
+                    <!-- Table of totals -->
+                    <table class="table table-hover table-borderless">
+                        <tbody>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td class="text-end">${{ subtotal|intcomma }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tax (10%)</td>
+                                <td class="text-end">${{ tax|intcomma }}</td>
+                            </tr>
+                            <tr class="table-active">
+                                <td>Total</td>
+                                <td class="text-end">${{ total|intcomma }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Checkout -->
+            <div class="row">
+                <div class="col text-end">
+                    <a href="#" class="btn btn-md btn-danger">Empty Cart</a>
+                    <a href="#" class="btn btn-md btn-success">Checkout</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        {% include 'includes/footer.html' %}
+
+</html>
