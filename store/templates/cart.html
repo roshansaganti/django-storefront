@@ -32,30 +32,22 @@
                             <h5 class="card-title">Summary</h5>
                             <hr>
                             <div class="card-text">
-                                <div class="row">
-                                    <div class="col text-start">
-                                        <p>Subtotal</p>
-                                    </div>
-                                    <div class="col text-end">
-                                        <p>${{ subtotal|intcomma }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col text-start">
-                                        <p>Tax (10%)</p>
-                                    </div>
-                                    <div class="col text-end">
-                                        <p>${{ tax|intcomma }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col text-start">
-                                        <p>Total</p>
-                                    </div>
-                                    <div class="col text-end">
-                                        <h5>${{ total|intcomma }}</h5>
-                                    </div>
-                                </div>
+                                <table class="table table-borderless table-sm">
+                                    <tbody>
+                                        <tr>
+                                            <td>Subtotal</td>
+                                            <td class="text-end">${{ subtotal|intcomma }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tax (10%)</td>
+                                            <td class="text-end">${{ tax|intcomma }}</td>
+                                        </tr>
+                                        <tr class="">
+                                            <td>Total</td>
+                                            <td class="text-end">${{ total|intcomma }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <hr>
                             <div class="card-text text-end">
