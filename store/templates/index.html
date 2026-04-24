@@ -9,6 +9,13 @@
 
         <div class="container mt-5">
             <div class="row">
+                <!-- Verify non-empty products list -->
+                {% if not products %}
+                <div class="col text-center">
+                    <h3>No products available!</h3>
+                    <p>Check back later for new products.</p>
+                </div>
+                {% else %}
                 {% for product in products %}
                 <div class="col-md-3 mb-4">
                     <div class="card" style="width: 18rem;">
@@ -23,6 +30,7 @@
                 </div>
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
 
         {% include 'includes/footer.html' %}
