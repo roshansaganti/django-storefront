@@ -1,3 +1,5 @@
+{% load humanize %}
+
 <!DOCTYPE html>
 <html lang="en">
     {% include 'includes/header.html' %}
@@ -11,21 +13,21 @@
             <!-- Subtotal -->
             <div class="row">
                 <div class="col text-end">
-                    <h4>Subtotal: ${{ subtotal|floatformat:2 }}</h4>
+                    <h4>Subtotal: ${{ subtotal|intcomma }}</h4>
                 </div>
             </div>
 
             <!-- Tax -->
             <div class="row">
                 <div class="col text-end">
-                    <h4>Tax: ${{ tax|floatformat:2 }}</h4>
+                    <h4>Tax: ${{ tax|intcomma }}</h4>
                 </div>
             </div>
 
             <!-- Total -->
             <div class="row">
                 <div class="col text-end">
-                    <h4>Total: ${{ total|floatformat:2 }}</h4>
+                    <h4>Total: ${{ total|intcomma }}</h4>
                 </div>
             </div>
 

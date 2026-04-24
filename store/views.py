@@ -43,9 +43,9 @@ def cart(request):
         "title": "Your Shopping Cart",
         "tagline": "Review your selected items and proceed to checkout!",  # noqa
         "items": items,
-        "subtotal": subtotal,
-        "tax": tax,
-        "total": total,
+        "subtotal": round(subtotal, 2),
+        "tax": round(tax, 2),
+        "total": round(total, 2),
     }
 
     return render(request, "cart.html", context)
