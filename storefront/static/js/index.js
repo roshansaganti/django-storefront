@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
   // Add click event listener to the "Add to Cart" button
-  $("#addCartButton").click(function () {
+  $("#itemsList").on("click", "#addCartButton", function () {
     // Disable the button to prevent multiple clicks
     $(this).prop("disabled", true);
     // Get the product ID from the button's data attribute
