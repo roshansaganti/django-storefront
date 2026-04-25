@@ -26,7 +26,7 @@ $(document).ready(function () {
       },
       success: function (response) {
         // Handle success (e.g., show a success message or update cart count)
-        refreshCart(); // Call the function to refresh the cart
+        // refreshCart();
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
