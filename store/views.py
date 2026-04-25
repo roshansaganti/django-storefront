@@ -46,6 +46,12 @@ def cart(request):
 
 # Cart CRUD operations
 def add_to_cart(request, product_id):
+    # Add product to cart
+    item = CartItem.objects.create(
+        cart_id=1, product_id=product_id, quantity=1
+    )
+    item.save()
+
     return HttpResponse(
         {
             "status": "success",
