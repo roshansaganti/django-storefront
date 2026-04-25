@@ -3,17 +3,19 @@
 function refreshCart() {
   // Implementation for refreshing the cart
   console.log("Cart refreshed"); // Debugging: Check if the function is called
-  // You can add code here to update the cart count or refresh the cart contents
+
   // Refresh the page to reflect the updated cart contents
-  location.reload();
+  // location.reload();
 }
 
 function refreshSummary() {
   // Implementation for refreshing the summary
   console.log("Summary refreshed"); // Debugging: Check if the function is called
-  // You can add code here to update the summary section with the latest cart information
-  // Refresh the page to reflect the updated summary
-  location.reload();
+
+  // Refresh the values in the summary section without reloading the entire page
+  $("#subtotalValue").load(location.href + " #subtotalValue");
+  $("#taxValue").load(location.href + " #taxValue");
+  $("#totalValue").load(location.href + " #totalValue");
 }
 
 $(document).ready(function () {
@@ -38,6 +40,8 @@ $(document).ready(function () {
         $(`#removeCartButton[data-product-id="${productId}"]`)
           .closest("tr")
           .remove();
+        // Refresh the summary section to reflect the updated cart information
+        refreshSummary();
         // Check if the cart is empty after removal and refresh the cart
         if ($("#cartTableBody tr").length === 0) refreshCart();
       },
