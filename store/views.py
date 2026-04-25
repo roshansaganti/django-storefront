@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from store.models import Product, CartItem
@@ -45,7 +46,12 @@ def cart(request):
 
 # Cart CRUD operations
 def add_to_cart(request, product_id):
-    return render(request, "add_to_cart.html", {"product_id": product_id})
+    return HttpResponse(
+        {
+            "status": "success",
+            "message": f"Product {product_id} added to cart.",
+        }
+    )
 
 
 def update_cart_item(request, cart_item_id):
