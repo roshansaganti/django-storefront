@@ -24,20 +24,12 @@ def cart(request):
     # Calculate subtotal
     subtotal = sum(item.product.price * item.quantity for item in items)
 
-    print(
-        f"Subtotal: {subtotal}"
-    )  # Debugging statement to check subtotal calculation
-
     # Calculate tax (assuming a fixed tax rate of 10%)
     tax_rate = 0.1
     tax = float(subtotal) * tax_rate
 
-    print(f"Tax: {tax}")  # Debugging statement to check tax calculation
-
     # Calculate total
     total = float(subtotal) + float(tax)
-
-    print(f"Total: {total}")  # Debugging statement to check total calculation
 
     context = {
         "title": "Your Shopping Cart",
