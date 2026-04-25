@@ -24,7 +24,9 @@
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">${{ product.price|floatformat:2 }}</p>
                             <!-- <p class="card-text">{{ product.description }}</p> -->
-                            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-outline-primary">Add to Cart</a>
+                            <button type="button" class="btn btn-outline-primary" id="addCartButton">
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
