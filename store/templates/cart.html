@@ -44,7 +44,11 @@
                                         </td>
                                         <td class="align-middle text-start">{{ item.product.name }}</td>
                                         <td class="align-middle text-center">${{ item.product.price|intcomma }}</td>
-                                        <td class="align-middle text-center">{{ item.quantity }}</td>
+                                        <td class="align-middle text-center">
+                                            <a href="#" class="btn btn-md btn-outline-secondary">-</a>
+                                            <span class="px-3">{{ item.quantity }}</span>
+                                            <a href="#" class="btn btn-md btn-outline-secondary">+</a>
+                                        </td>
                                         <!-- <td class="text-end">${{ item.product.price|floatformat:2 }}</td> -->
                                         <td class="align-middle text-end">
                                             <a href="#" class="btn btn-sm btn-outline-danger">Remove</a>
