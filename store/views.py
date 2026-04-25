@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 from store.models import Product, CartItem
@@ -52,7 +52,7 @@ def add_to_cart(request, product_id):
     )
     item.save()
 
-    return HttpResponse(
+    return JsonResponse(
         {
             "status": "success",
             "message": f"Product {product_id} added to cart.",
