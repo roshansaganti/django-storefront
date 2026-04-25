@@ -1,4 +1,13 @@
 // JavaScript for the storefront application
+
+function refreshCart() {
+  // Implementation for refreshing the cart
+  console.log("Cart refreshed"); // Debugging: Check if the function is called
+  // You can add code here to update the cart count or refresh the cart contents
+  // Refresh the page to reflect the updated cart contents
+  location.reload();
+}
+
 $(document).ready(function () {
   // Add click event listener to the "Add to Cart" button
   $("#addCartButton").click(function () {
@@ -17,6 +26,7 @@ $(document).ready(function () {
       },
       success: function (response) {
         // Handle success (e.g., show a success message or update cart count)
+        refreshCart(); // Call the function to refresh the cart
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
@@ -45,6 +55,8 @@ $(document).ready(function () {
         // Handle success (e.g., show a success message or update cart count)
         // Remove the entire table row corresponding to the removed item
         $(`#removeCartButton`).closest("tr").remove();
+        // Check if the cart is empty after removal and refresh the cart
+        if ($("table tbody tr").length === 0) refreshCart();
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
