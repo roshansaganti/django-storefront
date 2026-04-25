@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 
 from store.models import Product, CartItem
@@ -45,7 +46,18 @@ def cart(request):
 
 # Cart CRUD operations
 def add_to_cart(request, product_id):
-    return render(request, "add_to_cart.html", {"product_id": product_id})
+    # Add product to cart
+    item = CartItem.objects.create(
+        cart_id=1, product_id=product_id, quantity=1
+    )
+    item.save()
+
+    return JsonResponse(
+        {
+            "status": "success",
+            "message": f"Product {product_id} added to cart.",
+        }
+    )
 
 
 def update_cart_item(request, cart_item_id):
