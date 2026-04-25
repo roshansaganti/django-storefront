@@ -1,5 +1,26 @@
 // JavaScript for handling cart interactions
 
+function showToast(message, status) {
+  // Display a toast message to the user
+  $("#toastMessage").text(message);
+
+  // Add color to the toast based on the type of message (e.g., success, error)
+  if (status === "success") {
+    $("#liveToast").removeClass("text-bg-danger").addClass("text-bg-success");
+  } else if (status === "error") {
+    $("#liveToast").removeClass("text-bg-success").addClass("text-bg-danger");
+  } else {
+    $("#liveToast").removeClass("text-bg-success text-bg-danger");
+  }
+
+  // Show the toast
+  $("#liveToast").show();
+  // Hide the toast after 3 seconds
+  setTimeout(function () {
+    $("#liveToast").hide();
+  }, 3000);
+}
+
 $(document).ready(function () {
   // Add click event listener to the "Add to Cart" button
   $("#itemsList").on("click", "#addCartButton", function () {
@@ -18,10 +39,11 @@ $(document).ready(function () {
       },
       success: function (response) {
         // Handle success (e.g., show a success message or update cart count)
-        // refreshCart();
+        showToast("Item added to cart!", "success");
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
+        showToast("Error adding item to cart!", "error");
       },
     });
     // Re-enable the button after the AJAX request is complete
