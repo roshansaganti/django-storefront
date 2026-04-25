@@ -25,4 +25,26 @@ $(document).ready(function () {
     // Re-enable the button after the AJAX request is complete
     $(this).prop("disabled", false);
   });
+
+  // Add click event listener to the "Remove from Cart" button
+  $("#removeCartButton").click(function () {
+    // Get the product ID from the button's data attribute
+    const productId = $(this).data("product-id");
+    console.log("Product ID to remove:", productId); // Debugging: Check if the product ID is correct
+    // Send an AJAX request to remove the product from the cart
+    $.ajax({
+      url: `/cart/remove/${productId}/`, // URL to your Django view that handles removing from cart
+      method: "POST",
+      data: {
+        product_id: productId,
+        csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val(), // Include CSRF token
+      },
+      success: function (response) {
+        // Handle success (e.g., show a success message or update cart count)
+      },
+      error: function (error) {
+        // Handle error (e.g., show an error message)
+      },
+    });
+  });
 });
