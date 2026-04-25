@@ -36,7 +36,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="cartTableBody">
                                     {% for item in items %}
                                     <tr>
                                         <td>
@@ -51,7 +51,12 @@
                                         </td>
                                         <!-- <td class="text-end">${{ item.product.price|floatformat:2 }}</td> -->
                                         <td class="align-middle text-end">
-                                            <a href="#" class="btn btn-sm btn-outline-danger">Remove</a>
+                                            <!-- Hidden input for CSRF token -->
+                                            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                                            <button type="button" class="btn btn-outline-danger" id="removeCartButton"
+                                                data-product-id="{{ item.id }}">
+                                                Remove
+                                            </button>
                                         </td>
                                     </tr>
                                     {% endfor %}

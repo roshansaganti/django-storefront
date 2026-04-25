@@ -66,9 +66,16 @@ def update_cart_item(request, cart_item_id):
     )
 
 
-def remove_from_cart(request, cart_item_id):
-    return render(
-        request, "remove_from_cart.html", {"cart_item_id": cart_item_id}
+def remove_from_cart(request, product_id):
+    # Remove item from cart
+    item = CartItem.objects.get(id=product_id)
+    item.delete()
+
+    return JsonResponse(
+        {
+            "status": "success",
+            "message": f"Product {product_id} removed from cart.",
+        }
     )
 
 
