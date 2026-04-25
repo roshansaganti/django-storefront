@@ -43,6 +43,8 @@ $(document).ready(function () {
       },
       success: function (response) {
         // Handle success (e.g., show a success message or update cart count)
+        // Remove the entire table row corresponding to the removed item
+        $(`#removeCartButton`).closest("tr").remove();
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
