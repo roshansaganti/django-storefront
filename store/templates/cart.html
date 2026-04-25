@@ -23,6 +23,38 @@
             <div class="row">
                 <!-- Cart Items -->
                 <div class="col-xl-8">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <table class="table table-hover table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <!-- <th class="text-end">Total</th> -->
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in items %}
+                                    <tr>
+                                        <td>
+                                            <img src="https://picsum.photos/id/26/75" class="img-thumbnail" alt="...">
+                                        </td>
+                                        <td class="align-middle">{{ item.product.name }}</td>
+                                        <td class="align-middle">${{ item.product.price|intcomma }}</td>
+                                        <td class="align-middle">{{ item.quantity }}</td>
+                                        <!-- <td class="text-end">${{ item.product.price|floatformat:2 }}</td> -->
+                                        <td class="align-middle text-end">
+                                            <a href="#" class="btn btn-sm btn-outline-danger">Remove</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     {% for item in items %}
                     <div class="card mb-3">
                         <div class="row g-0">
