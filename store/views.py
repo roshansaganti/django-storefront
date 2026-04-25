@@ -43,6 +43,23 @@ def cart(request):
     return render(request, "cart.html", context)
 
 
+# Cart CRUD operations
+def add_to_cart(request, product_id):
+    return render(request, "add_to_cart.html", {"product_id": product_id})
+
+
+def update_cart_item(request, cart_item_id):
+    return render(
+        request, "update_cart_item.html", {"cart_item_id": cart_item_id}
+    )
+
+
+def remove_from_cart(request, cart_item_id):
+    return render(
+        request, "remove_from_cart.html", {"cart_item_id": cart_item_id}
+    )
+
+
 def products(request):
     context = {
         "title": "Products",
