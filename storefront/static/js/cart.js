@@ -4,8 +4,8 @@ function refreshCart() {
   // Implementation for refreshing the cart
   console.log("Cart refreshed"); // Debugging: Check if the function is called
 
-  // Refresh the page to reflect the updated cart contents
-  // location.reload();
+  // Refresh the cart container without reloading the entire page
+  $("#cartContainer").load(location.href + " #cartContainer");
 }
 
 function refreshSummary() {
@@ -40,10 +40,10 @@ $(document).ready(function () {
         $(`#removeCartButton[data-product-id="${productId}"]`)
           .closest("tr")
           .remove();
-        // Refresh the summary section to reflect the updated cart information
-        refreshSummary();
         // Check if the cart is empty after removal and refresh the cart
         if ($("#cartTableBody tr").length === 0) refreshCart();
+        // Refresh the summary section to reflect the updated cart information
+        refreshSummary();
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
