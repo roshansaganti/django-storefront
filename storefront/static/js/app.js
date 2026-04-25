@@ -8,6 +8,14 @@ function refreshCart() {
   location.reload();
 }
 
+function refreshSummary() {
+  // Implementation for refreshing the summary
+  console.log("Summary refreshed"); // Debugging: Check if the function is called
+  // You can add code here to update the summary section with the latest cart information
+  // Refresh the page to reflect the updated summary
+  location.reload();
+}
+
 $(document).ready(function () {
   // Add click event listener to the "Add to Cart" button
   $("#addCartButton").click(function () {
@@ -37,7 +45,7 @@ $(document).ready(function () {
   });
 
   // Add click event listener to the "Remove from Cart" button
-  $("#removeCartButton").click(function () {
+  $("#cartTableBody").on("click", "#removeCartButton", function () {
     // Disable the button to prevent multiple clicks
     $(this).prop("disabled", true);
     // Get the product ID from the button's data attribute
@@ -54,9 +62,11 @@ $(document).ready(function () {
       success: function (response) {
         // Handle success (e.g., show a success message or update cart count)
         // Remove the entire table row corresponding to the removed item
-        $(`#removeCartButton`).closest("tr").remove();
+        $(`#removeCartButton[data-product-id="${productId}"]`)
+          .closest("tr")
+          .remove();
         // Check if the cart is empty after removal and refresh the cart
-        if ($("table tbody tr").length === 0) refreshCart();
+        if ($("#cartTableBody tr").length === 0) refreshCart();
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
