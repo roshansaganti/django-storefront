@@ -76,15 +76,27 @@
                                     <tbody>
                                         <tr>
                                             <td>Subtotal</td>
-                                            <td class="text-end">${{ subtotal|intcomma }}</td>
+                                            <td class="text-end">
+                                                <span id="subtotalValue">
+                                                    ${{ subtotal|intcomma }}
+                                                </span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Tax (10%)</td>
-                                            <td class="text-end">${{ tax|intcomma }}</td>
+                                            <td class="text-end">
+                                                <span id="taxValue">
+                                                    ${{ tax|intcomma }}
+                                                </span>
+                                            </td>
                                         </tr>
-                                        <tr class="">
+                                        <tr>
                                             <td>Total</td>
-                                            <td class="text-end">${{ total|intcomma }}</td>
+                                            <td class="text-end">
+                                                <span id="totalValue">
+                                                    ${{ total|intcomma }}
+                                                </span>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
