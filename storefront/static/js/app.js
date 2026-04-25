@@ -2,6 +2,8 @@
 $(document).ready(function () {
   // Add click event listener to the "Add to Cart" button
   $("#addCartButton").click(function () {
+    // Disable the button to prevent multiple clicks
+    $(this).prop("disabled", true);
     // Get the product ID from the button's data attribute
     const productId = $(this).data("product-id");
     console.log("Product ID:", productId); // Debugging: Check if the product ID is correct
@@ -15,12 +17,12 @@ $(document).ready(function () {
       },
       success: function (response) {
         // Handle success (e.g., show a success message or update cart count)
-        alert("Product added to cart!");
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
-        alert("Error adding product to cart.");
       },
     });
+    // Re-enable the button after the AJAX request is complete
+    $(this).prop("disabled", false);
   });
 });
