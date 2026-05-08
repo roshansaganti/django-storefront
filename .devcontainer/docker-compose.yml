@@ -12,11 +12,13 @@ services:
       - default
   web:
     container_name: web
-    build: .
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
     # command: uv run python manage.py runserver 0.0.0.0:8000
     # command: tail -f /dev/null
     volumes:
-      - .:/app
+      - ..:/app
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
