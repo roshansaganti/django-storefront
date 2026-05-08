@@ -58,6 +58,10 @@ $(document).ready(function () {
     console.log("Checkout button clicked"); // Debugging: Check if the button click is registered
     // Disable the button to prevent multiple clicks
     $(this).prop("disabled", true);
+    // Change button text to use spinner and indicate processing
+    $(this).html(
+      `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
+    );
     // Send an AJAX request to proceed to checkout
     $.ajax({
       url: "/checkout/",
