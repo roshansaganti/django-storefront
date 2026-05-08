@@ -67,12 +67,15 @@ $(document).ready(function () {
       },
       success: function (response) {
         // Handle success (e.g., redirect to checkout page)
-        // Clear the cart and refresh the page
-        $("#cartTableBody").empty();
-        // Check if the cart is empty after removal and refresh the cart
-        if ($("#cartTableBody tr").length === 0) refreshCart();
-        // Refresh the summary section to reflect the updated cart information
-        refreshSummary();
+        // Sleep for 3 seconds
+        setTimeout(function () {
+          // Clear the cart and refresh the page
+          $("#cartTableBody").empty();
+          // Check if the cart is empty after removal and refresh the cart
+          if ($("#cartTableBody tr").length === 0) refreshCart();
+          // Refresh the summary section to reflect the updated cart information
+          refreshSummary();
+        }, 3000);
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
