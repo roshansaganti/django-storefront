@@ -104,7 +104,8 @@
                             <hr>
                             <div class="card-text text-end">
                                 <!-- <a href="#" class="btn btn-md btn-danger">Empty Cart</a> -->
-                                <a href="#" class="btn btn-md btn-success">Proceed to Checkout</a>
+                                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                                <button type="button" class="btn btn-md btn-success" id="checkoutButton">Checkout</button>
                             </div>
                         </div>
                     </div>

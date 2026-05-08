@@ -79,6 +79,17 @@ def remove_from_cart(request, product_id):
     )
 
 
+def checkout(request):
+    # Clear the cart (for simplicity, we just delete all items)
+    CartItem.objects.all().delete()
+
+    return JsonResponse(
+        {
+            "status": "success",
+        }
+    )
+
+
 def products(request):
     context = {
         "title": "Products",

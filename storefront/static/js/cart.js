@@ -52,4 +52,32 @@ $(document).ready(function () {
     // Re-enable the button after the AJAX request is complete
     $(this).prop("disabled", false);
   });
+
+  // Checkout button click event listener
+  $("#checkoutButton").on("click", function () {
+    console.log("Checkout button clicked"); // Debugging: Check if the button click is registered
+    // Disable the button to prevent multiple clicks
+    $(this).prop("disabled", true);
+    // Send an AJAX request to proceed to checkout
+    $.ajax({
+      url: "/checkout/",
+      method: "POST",
+      data: {
+        csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val(),
+      },
+      success: function (response) {
+        // Handle success (e.g., redirect to checkout page)
+        // Clear the cart and refresh the page
+        $("#cartTableBody").empty();
+        // Check if the cart is empty after removal and refresh the cart
+        if ($("#cartTableBody tr").length === 0) refreshCart();
+        // Refresh the summary section to reflect the updated cart information
+        refreshSummary();
+      },
+      error: function (error) {
+        // Handle error (e.g., show an error message)
+        console.error("Error occurred while proceeding to checkout:", error);
+      },
+    });
+  });
 });
