@@ -56,6 +56,7 @@ def add_to_cart(request, product_id):
         {
             "status": "success",
             "message": f"Product {product_id} added to cart.",
+            "cart_item_count": CartItem.objects.count(),
         }
     )
 

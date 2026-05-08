@@ -39,7 +39,10 @@ $(document).ready(function () {
       },
       success: function (response) {
         // Handle success (e.g., show a success message or update cart count)
-        showToast("Item added to cart!", "success");
+        // showToast("Item added to cart!", "success");
+        // Update the cart count in the navbar (if you have a cart count element)
+        // For example, if you have an element with ID "cartCount":
+        $("#cartNavbarLink").text(`Cart (${response.cart_item_count})`); // Update cart count in navbar
       },
       error: function (error) {
         // Handle error (e.g., show an error message)
