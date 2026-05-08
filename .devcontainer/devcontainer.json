@@ -1,0 +1,24 @@
+{
+  "name": "django-storefront",
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.override.yml"],
+  "service": "web",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose",
+  "overrideCommand": false,
+  "remoteUser": "root",
+  "postCreateCommand": "uv run python manage.py migrate --noinput || true",
+  "updateContentCommand": "uv sync --no-dev",
+  "remoteEnv": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONUNBUFFERED": "1"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "batisteo.vscode-django",
+        "njpwerner.autodocstring"
+      ]
+    }
+  }
+}
