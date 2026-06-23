@@ -43,7 +43,22 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     "django_seed",
     "store",
+    # SSO
+    "mozilla_django_oidc"
 ]
+
+# SSO
+AUTHENTICATION_BACKENDS = [
+    "mozilla_django_oidc.auth.OIDCAuthenticationBackend",
+]
+
+# SSO
+# OIDC_RP_CLIENT_ID = os.environ['OIDC_RP_CLIENT_ID']
+# OIDC_RP_CLIENT_SECRET = os.environ['OIDC_RP_CLIENT_SECRET']
+# OIDC_OP_AUTHORIZATION_ENDPOINT = "<URL of the OIDC OP authorization endpoint>"
+# OIDC_OP_TOKEN_ENDPOINT = "<URL of the OIDC OP token endpoint>"
+# OIDC_OP_USER_ENDPOINT = "<URL of the OIDC OP userinfo endpoint>"
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
