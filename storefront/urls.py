@@ -21,4 +21,6 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("store.urls")),
+    # SSO
+    path("oidc/", include("mozilla_django_oidc.urls")),
 ]
