@@ -1,15 +1,26 @@
 services:
   db:
+    image: mysql:8.0.42
     container_name: db
-    image: postgres:15.5-alpine3.18
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: mysql_admin
+      MYSQL_PASSWORD: admin
     ports:
-      - "5432:5432"
+      - 3306:3306
     networks:
-      - default
+      - default_network
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./conf/mysql.cnf:/etc/mysql/my.cnf
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
   web:
     container_name: web
     build:
@@ -20,16 +31,21 @@ services:
     volumes:
       - ..:/app
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
-      POSTGRES_HOST: db
+      MYSQL_USER: mysql_admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: mydatabase
+      MYSQL_HOST: db
     ports:
       - "8000:8000"
     depends_on:
       - db
     networks:
-      - default
+      - default_network
+
+volumes:
+  mysql_data:
+
 networks:
-  default:
+  default_network:
     driver: bridge
+    name: default_network
