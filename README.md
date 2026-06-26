@@ -11,3 +11,9 @@ If there are errors:
 ```
 python manage.py migrate --skip-checks
 ```
+
+## Seed Database
+
+```
+python manage.py shell < store/seeds.py
+```
