@@ -6,5 +6,6 @@ dependencies = [
     "django>=6.0.6",
     "django-seed>=0.3.1",
     "mozilla-django-oidc>=5.0.2",
+    "mysqlclient>=2.2.8",
     "psycopg2-binary>=2.9.12",
 ]
